@@ -42,7 +42,7 @@ $head = "<head>
 $header = "<header class=\"d-flex-row justify-content-between p-2 bd-highlight text-center\">
 		<table style=\"border: none;\">
 			<tr>
-				<td><img src=\"./images/logo-unilab.jpg\" style=\"float: left;\" width=\"150\" /></td>
+				<td style=\"height:100px\"><img src=\"./images/logo-unilab.jpg\" style=\"float: left;\" width=\"150\" /></td>
 				<td style=\"text-align: center\">
 					<h1>Residência Agrária</h1>
 					<h4>Ficha de qualificação</h4>
