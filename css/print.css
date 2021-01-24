@@ -1,0 +1,43 @@
+@media print {
+  body {
+    margin: 0;
+    color: #000;
+    background-color: #fff;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  input[type="number"] {
+    width: 30px;
+    border: none;
+  }
+  input[type="text"],
+  .input-group-text {
+    height: 20px;
+    line-height: 20px;
+    border: none;
+  }
+  input[type="text"] {
+    border-bottom: 1px solid black;
+  }
+  .pontos {
+    text-align: center;
+  }
+  table {
+    font-size: 12px;
+  }
+  .form-control {
+    padding: 0px;
+  }
+  .input-group-text::after {
+    content: ":";
+  }
+  button[type="button"] {
+    display: none;
+  }
+}

@@ -1,0 +1,11 @@
+input[type="number"] {
+  width: 50px;
+}
+#topo {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+}
+.pontuacao {
+  text-align: right;
+}

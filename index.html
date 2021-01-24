@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ficha de Qualificação - Residência</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" media="screen"/>
+    <link href="./css/print.css" rel="stylesheet" media="print"  />
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="./js/sweetalert2.js"></script>
+  </head>
+
+  <body>
+    <main class="container pt-3" id="app">
+      <div id="topo">
+        <header
+          class="d-flex-row justify-content-between p-2 bd-highlight text-center"
+        >
+          <img src="./images/logo-unilab.jpg" style="float: left;" class="img-fluid" alt="Unilab" width="200" />
+          <div class="mb-3">
+            <h1>Residência Agrária</h1>
+            <h4>Ficha de qualificação</h4>
+          </div>
+        </header>
+        <form id="dados" method="POST" action="http://proppg.unilab.edu.br/forms/ficha-de-qualificacao-residencia/tratar.php">
+        <div class="d-flex-row">
+          <div class="row">
+            <div class="col-9">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Nome</span>
+                </div>
+                <input
+                  autofocus
+                    id="nome"
+                    type="text"
+                    name="nome"
+                    class="form-control"
+                    placeholder="Seu nome aqui"
+                    v-model="grupos[0].nome"
+                  />
+                </div>
+              </div>
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="">Pontos</span>
+                </div>
+              <input
+              style="font-weight: 900;"
+                type="text"
+                name="total"
+                class="form-control pontos"
+                :value="getTotal()"
+                readonly
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <table
+        v-for="grupo in grupos"
+        :key="grupo.grupo"
+        class="my-5 table table-hover table-sm"
+      >
+        <thead>
+          <tr>
+            <th><input type="hidden" :name="'grupo[' + grupo.grupoId + '][grupo]'" v-model="grupo.grupo"/>{{grupo.grupo}}</th>
+            <th>Pontuação</th>
+            <th>Máximo</th>
+            <th>Quantidade</th>
+            <th width="90">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in grupo.itemsGrupo" :key="index">
+            <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][descricao]'" v-model="item.descricao"/>{{item.descricao}}</td>
+            <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][peso]'" v-model="item.peso"/>{{item.pontuacao}}</td>
+            <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][maximo]'" v-model="item.maximo"/>{{item.maximo}}</td>
+            <td>
+              <input
+                :name="'grupo[' + grupo.grupoId + '][' + index + '][quantidade]'"
+                type="number"
+                min="0"
+                maxlength="4"
+                v-model="item.quantidade"
+              />
+            </td>
+            <td>
+              <input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][totalItem]'"  v-model="item.totalItem"/>
+              {{(item.totalItem = ((item.peso * item.quantidade)>=item.maximo ?
+              item.maximo : (item.peso * item.quantidade) )).toFixed(1)}}
+              <span
+                v-if="item.totalItem >= item.maximo"
+                class="badge rounded-pill bg-danger"
+                >max</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </form>
+      <div class="mb-5">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm col-12"
+          id="gera-pdf"
+          @click="imprimir()"
+        >
+          Gerar PDF
+        </button>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

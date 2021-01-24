@@ -1,0 +1,42 @@
+
+*{font-family: verdana; font-size: 14px; }
+h1{font-size: 20px}
+div#geral{width: 980px; margin: 0 auto}
+div#esq{float: left;}
+div#centro{float: left; width: 460px; height: 90px; line-height: 70px; text-align: center}
+div#dir{float: right;}
+div.clear{clear: both;}
+td.label{text-align: right;}
+table#ident tr td select{min-width: 424px}
+table{margin: 0 auto; border: 1px solid #666; width: 100%}
+table, td {padding: 2px 5px; border-collapse: collapse}
+tr:hover {background-color: #f5f5f5}
+
+tr.l1 td{background: #000000; color: #ffffff; font-size: 16px; font-weight: bold;}
+tr.l2 td{background: #cccccc; font-weight: bold;}
+tr.l3 td{background: #f2f4f4; font-weight: bold;}
+tr.l1 td, tr.l2 td, tr.l3 td{border-bottom: 1px solid black}
+tr.l3 td{border-bottom: 1px solid black; border-top: 1px solid black}
+
+input[type="number"] {width:55px; text-align: center}
+
+.botao{
+        font-size:14px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:0px;
+        width:120px;
+        height:30px;
+       }
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+	tr.l1, tr.l2{color: #000; font-size: 56px }
+	input, select {border: none}
+
+}
