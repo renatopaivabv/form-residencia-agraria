@@ -5,25 +5,36 @@ if(!isset($_POST['grupo'])) die('<h2>Dados necessários</h2><a href="#" onclick=
 $table = "";
 
 foreach($_POST['grupo'] as $grupos){ 
-	$table .= "<table class=\"mb-3\">";
+	$table .= "<table class=\"content\">";
 	foreach($grupos as $items){
 		//print_r($items);
 		if(is_string($items)){
 			$table .= "<thead>
 			<tr>
-			<th>" . $items . "</th>
-							<th>Pontuação</th>
-							<th>Máximo</th>
-							<th>Quantidade</th>
-							<th>Total</th>
+			<th style=\"border-bottom: 1px solid #000000;\">" . $items . "</th>
+							<th style=\"border-bottom: 1px solid #000000;\">Pontuação</th>
+							<th style=\"border-bottom: 1px solid #000000;\">Máximo</th>
+							<th style=\"border-bottom: 1px solid #000000;\">Quantidade</th>
+							<th style=\"border-bottom: 1px solid #000000;\">Total</th>
 							</tr>
 						</thead>";
 						$table .= "<tbody>";
 		}elseif(is_array($items)){
 			$table .= "<tr>";
 			foreach($items as $k => $item){
-				$texto = (in_array($k, ['peso', 'totalItem']) ? number_format($item,1,',','.') : $item);
-				$table .= "<td>" . $texto . "</td>"; 
+				switch($k){
+					case 'maximo':
+					case 'quantidade':
+						$textAlign = 'center';
+						break;
+					case 'totalItem':
+						$textAlign = 'right';
+						break;
+					default:
+						$textAlign = 'left';
+				}
+				$texto = (in_array($k, ['totalItem']) ? number_format($item,1,',','.') : $item);
+				$table .= "<td style=\"text-align: $textAlign; border-bottom: 1px solid #a9a9a9;\">" . $texto . "</td>"; 
 			}
 			$table .= "</tr>";
 		}
@@ -35,7 +46,7 @@ foreach($_POST['grupo'] as $grupos){
 $head = "<head>
 <meta charset=\"UTF-8\">
 <title>Unilab - Resiência</title>
-<link href=\"./style.css\" rel=\"stylesheet\" type=\"text/css\" />
+
 <link href=\"./style-pdf.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>";
 
@@ -45,7 +56,7 @@ $header = "<header class=\"d-flex-row justify-content-between p-2 bd-highlight t
 				<td style=\"width:160px\"><img src=\"./images/logo-unilab.jpg\" style=\"float: left;\" width=\"150\" /></td>
 				<td style=\"text-align: center\">
 					<h1>Residência Agrária</h1>
-					<h4>Ficha de qualificação</h4>
+					<h4>Especialização em Sistemas Agrícolas Sustentáveis do Semiárido</h4>
 				</td>
 				<td style=\"width:160px\"></td>
 			</tr>
@@ -78,7 +89,7 @@ $table
 $pdf = $head . $body;
 $nomeSlug = slug($_POST['nome']);
 
- $pdf;
+$pdf;
 
 require_once __DIR__ . '/vendor/autoload.php';
 

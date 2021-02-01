@@ -20,10 +20,10 @@
           <img src="./images/logo-unilab.jpg" style="float: left;" class="img-fluid" alt="Unilab" width="200" />
           <div class="mb-3">
             <h1>Residência Agrária</h1>
-            <h4>Ficha de qualificação</h4>
+            <h4>Especialização em Sistemas Agrícolas Sustentáveis do Semiárido</h4>
           </div>
         </header>
-        <form id="dados" method="POST" action="http://proppg.unilab.edu.br/forms/ficha-de-qualificacao-residencia/tratar.php">
+        <form id="dados" method="POST" action="./tratar.php">
         <div class="d-flex-row">
           <div class="row">
             <div class="col-9">
@@ -76,7 +76,7 @@
         <tbody>
           <tr v-for="(item, index) in grupo.itemsGrupo" :key="index">
             <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][descricao]'" v-model="item.descricao"/>{{item.descricao}}</td>
-            <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][peso]'" v-model="item.peso"/>{{item.pontuacao}}</td>
+            <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][peso]'" v-model="item.pontuacao"/>{{item.pontuacao}}</td>
             <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][maximo]'" v-model="item.maximo"/>{{item.maximo}}</td>
             <td>
               <input
