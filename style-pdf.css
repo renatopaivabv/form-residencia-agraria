@@ -10,6 +10,9 @@ body {
 h1 {
   font-size: 18px;
 }
+h3 {
+  font-size: 16px;
+}
 div#geral {
   width: 980px;
   margin: 0 auto;

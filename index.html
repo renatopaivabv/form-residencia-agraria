@@ -72,7 +72,7 @@
             <th>Quantidade</th>
             <th width="90">Total</th>
           </tr>
-        </thead>
+        </thead> 
         <tbody>
           <tr v-for="(item, index) in grupo.itemsGrupo" :key="index">
             <td><input type="hidden" :name="'grupo[' + grupo.grupoId + '][' + index + '][descricao]'" v-model="item.descricao"/>{{item.descricao}}</td>

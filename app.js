@@ -89,7 +89,7 @@ const App = {
             },
             {
               descricao:
-                "Artigo publicado em periódico  - Ciências Agrárias e correlatas",
+                "Artigo publicado em periódico - Ciências Agrárias e correlatas",
               pontuacao: "2,0 pontos/ artigo",
               peso: 2,
               maximo: 10,

@@ -10,7 +10,7 @@ foreach($_POST['grupo'] as $grupos){
 		//print_r($items);
 		if(is_string($items)){
 			$table .= "<thead>
-			<tr>
+			<tr> 
 			<th style=\"border-bottom: 1px solid #000000;\">" . $items . "</th>
 							<th style=\"border-bottom: 1px solid #000000;\">Pontuação</th>
 							<th style=\"border-bottom: 1px solid #000000;\">Máximo</th>
